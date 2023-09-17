@@ -1,6 +1,6 @@
 # Next.js & NextUI Template
 
-Here is a fullstack challenge to create an image uploader in the cloud using cloudbinary and nextjs.
+Here is a fullstack challenge to create an image uploader in the cloud using cloudinary and nextjs.
 
 ## Technologies Used
 

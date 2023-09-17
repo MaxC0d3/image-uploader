@@ -4,7 +4,7 @@ import "@/styles/globals.css";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import { Metadata } from "next";
-import { Providers } from "./providers";
+import { Providers } from "../providers";
 
 export const metadata: Metadata = {
   title: {
