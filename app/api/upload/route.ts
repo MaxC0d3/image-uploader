@@ -8,7 +8,7 @@ interface NextApiFile extends Request {
 
 export async function POST(request: NextApiFile) {
   cloudinary.config({
-    cloud_name: process.env.NEXT_PUBLIC_CLOUD_NAME,
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.NEXT_PUBLIC_API_KEY,
     api_secret: process.env.NEXT_PUBLIC_API_SECRET,
   })
@@ -20,8 +20,6 @@ export async function POST(request: NextApiFile) {
 
   const path = formData.name
 
-  console.log(path)
-
   const opts = {
     use_filename: true,
     unique_filename: false,
@@ -30,15 +28,7 @@ export async function POST(request: NextApiFile) {
   }
 
   try {
-    const upload = await cloudinary.uploader.upload(path, opts, (error, result) => {
-      if (error) {
-        console.log('CLOUDINARY UPLOAD ERROR', error)
-      } else {
-        console.log('CLOUDINARY UPLOAD RESULT', result)
-      }
-    })
-
-    console.log(upload.secure_url)
+    const upload = await cloudinary.uploader.upload(path, opts)
 
     return NextResponse.json({ success: true, imageUrl: upload?.secure_url })
   } catch (e) {

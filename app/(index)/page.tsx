@@ -16,6 +16,7 @@ export default function Home() {
       const formData = new FormData()
       formData.append('image', file)
 
+
       fetch('/api/upload', {
         method: 'POST',
         body: formData,
@@ -26,15 +27,10 @@ export default function Home() {
         .then((res) => res.json())
         .then(({ imageURL }) => {
           setImageUrl(imageURL)
-          console.log('FETCH DONE');
           setIsUploading(false)
         })
     })
   }, [])
-
-  if (imageUrl) {
-    console.log('imageUrl', imageUrl);
-  }
 
   return (
     <section className='flex flex-col items-center justify-center gap-4 py-8 md:py-10'>
